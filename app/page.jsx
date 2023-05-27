@@ -1,3 +1,4 @@
+import Feed from "@components/Feed";
 function Home() {
   return (
     <section className="w-full flex-center flex-col">
@@ -11,7 +12,7 @@ function Home() {
         discover, create and share creative prompts.
       </p>
 
-      {/* Feed */}
+      <Feed />
     </section>
   );
 }

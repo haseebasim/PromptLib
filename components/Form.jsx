@@ -12,7 +12,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       </p>
 
       <form
-        className="mt-10 w-full max-w-2xl flex-col gap-7 glassmorphism"
+        className="mt-10 w-full max-w-2xl flex-col glassmorphism"
         onSubmit={handleSubmit}
       >
         <label>
@@ -45,7 +45,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             Cancel
           </Link>
           <button
-            type="button"
+            type="submit"
             disabled={submitting}
             className="px-5 py-1.5 text-sm rounded-full text-white bg-primary-orange"
           >

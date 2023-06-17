@@ -6,7 +6,7 @@ export const GET = async (req, { params }) => {
     await connectToDB();
     const post = await Prompt.findById(params.id).populate("creator");
 
-    if (!prompt) return new Response("Prompt not found", { status: 404 });
+    if (!post) return new Response("Prompt not found", { status: 404 });
 
     return new Response(JSON.stringify(post), {
       status: 200,
@@ -43,6 +43,6 @@ export const DELETE = async (req, { params }) => {
 
     return new Response("Prompt deleted successfully", { status: 200 });
   } catch (error) {
-    return new Response("Failed to delete the prompt", { status: 500 });
+    return new Response("Failed to delete  the prompt", { status: 500 });
   }
 };

@@ -14,7 +14,7 @@ const Nav = () => {
       const response = await getProviders();
       setProviders(response);
     })();
-  },[]);
+  }, []);
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -24,9 +24,9 @@ const Nav = () => {
           width={30}
           height={30}
           className="object-contain"
-          alt="promptopia-log"
+          alt="promptlib-log"
         />
-        <p className="logo_text">Promptopia</p>
+        <p className="logo_text">PromptLib</p>
       </Link>
       {/* Desktop Nav */}
       <div className="sm:flex hidden">

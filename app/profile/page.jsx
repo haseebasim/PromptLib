@@ -12,7 +12,7 @@ const MyProfile = () => {
     if (session?.user.id)
       (async () => {
         const response = await fetch(`/api/users/${session?.user.id}/posts`);
-        const data = await response.json();
+        const { posts: data, user } = await response.json();
         setPosts(data);
       })();
   }, [session?.user.id]);

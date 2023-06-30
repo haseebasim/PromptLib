@@ -16,10 +16,20 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
     setTimeout(() => setCopied(""), 3000);
   };
 
+  const redirectToProfilePage = () => {
+    if (post.creator.email === session.user.email) {
+      router.push("/profile");
+      return;
+    }
+    router.push(`/profile/${post.creator._id}`);
+  };
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex-start items-start gap-3 cursor-pointer">
+        <div
+          onClick={redirectToProfilePage}
+          className="flex-1 flex-start items-start gap-3 cursor-pointer"
+        >
           <Image
             src={post.creator.image}
             alt="user-image"

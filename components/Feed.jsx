@@ -30,9 +30,9 @@ const Feed = () => {
     // debounce method
     setSearchTimeout(
       setTimeout(() => {
-        const searchResults = getSearchResults();
+        const searchResults = getSearchResults(e.target.value);
         setSearchResults(searchResults);
-      }, 1000)
+      }, 500)
     );
   };
 
@@ -44,7 +44,7 @@ const Feed = () => {
     })();
   }, []);
 
-  const getSearchResults = () => {
+  const getSearchResults = (searchText) => {
     const regex = new RegExp(searchText, "i");
     const searchResults = posts.filter(
       (post) =>
@@ -53,6 +53,21 @@ const Feed = () => {
         regex.test(post.prompt)
     );
     return searchResults;
+  };
+
+  const handleSearchByTag = (tag) => {
+    clearTimeout(searchTimeout);
+    setSearchText(tag);
+
+    setSearchResults([]);
+
+    // debounce method
+    setSearchTimeout(
+      setTimeout(() => {
+        const searchResults = getSearchResults(tag);
+        setSearchResults(searchResults);
+      }, 1000)
+    );
   };
 
   return (
@@ -68,7 +83,7 @@ const Feed = () => {
         />
         <PromptCardList
           data={searchText !== "" ? searchResults : posts}
-          handleTagClick={() => {}}
+          handleTagClick={handleSearchByTag}
         />
       </form>
     </section>

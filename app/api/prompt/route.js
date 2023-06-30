@@ -4,7 +4,7 @@ import { connectToDB } from "@utils/database";
 export const GET = async (req) => {
   try {
     await connectToDB();
-    const posts = await Prompt.find({}).populate("creator");
+    const posts = await Prompt.find().populate("creator");
     return new Response(JSON.stringify(posts), {
       status: 200,
     });

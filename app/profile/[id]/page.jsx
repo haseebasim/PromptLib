@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import Profile from "@components/profile";
+import Profile from "@components/Profile";
 
 const UserProfile = ({ params }) => {
   const [posts, setPosts] = useState([]);

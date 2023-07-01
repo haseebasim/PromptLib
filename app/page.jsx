@@ -1,5 +1,19 @@
+"use client";
 import Feed from "@components/Feed";
+import { useEffect, useState } from "react";
 function Home() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch("/api/prompt", {
+        cache: "no-store",
+      });
+      const data = await response.json();
+      setPosts(data);
+    })();
+  }, []);
+
   return (
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
@@ -12,7 +26,7 @@ function Home() {
         discover, create and share creative prompts.
       </p>
 
-      <Feed />
+      <Feed posts={posts} />
     </section>
   );
 }

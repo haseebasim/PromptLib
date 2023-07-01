@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
 
@@ -16,11 +15,10 @@ const PromptCardList = ({ data, handleTagClick }) => {
   );
 };
 
-const Feed = () => {
+const Feed = ({ posts }) => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
-  const [posts, setPosts] = useState([]);
 
   const handleSearchChange = (e) => {
     e.preventDefault();
@@ -35,16 +33,6 @@ const Feed = () => {
       }, 500)
     );
   };
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetch("/api/prompt", {
-        next: { revalidate: 0 },
-      });
-      const data = await response.json();
-      setPosts(data);
-    })();
-  }, []);
 
   const getSearchResults = (searchText) => {
     const regex = new RegExp(searchText, "i");

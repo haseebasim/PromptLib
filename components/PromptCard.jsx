@@ -15,9 +15,8 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
     navigator.clipboard.writeText(post.prompt);
     setTimeout(() => setCopied(""), 3000);
   };
-
   const redirectToProfilePage = () => {
-    if (post.creator.email === session.user.email) {
+    if (post.creator.email === session?.user.email) {
       router.push("/profile");
       return;
     }
